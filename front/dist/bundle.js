@@ -28907,6 +28907,7 @@ var Main = function (_Component) {
         };
         _this.handleChange = _this.handleChange.bind(_this);
         _this.handleSubmit = _this.handleSubmit.bind(_this);
+        _this.handleDelete = _this.handleDelete.bind(_this);
         return _this;
     }
 
@@ -28927,8 +28928,21 @@ var Main = function (_Component) {
             });
         }
     }, {
+        key: 'handleDelete',
+        value: function handleDelete(evt) {
+            evt.preventDefault();
+            var removeItem = evt.target.value;
+            var idxRemove = this.state.things.indexOf(removeItem);
+            var algo = this.state.things.splice(idxRemove, 1);
+            this.setState({
+                things: this.state.things
+            });
+        }
+    }, {
         key: 'render',
         value: function render() {
+            var _this2 = this;
+
             return _react2.default.createElement(
                 'div',
                 null,
@@ -28958,7 +28972,7 @@ var Main = function (_Component) {
                             ' ',
                             _react2.default.createElement(
                                 'button',
-                                null,
+                                { onClick: _this2.handleDelete, value: thing },
                                 'ELiminar'
                             ),
                             ' '

@@ -14,6 +14,7 @@ class Main extends Component {
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
     
     handleChange(evt){
@@ -27,6 +28,16 @@ class Main extends Component {
         evt.preventDefault();
         this.setState({
             things: [...this.state.things, this.state.thing]
+        })
+    }
+
+    handleDelete(evt){
+        evt.preventDefault();
+        let removeItem = evt.target.value;
+        let idxRemove = this.state.things.indexOf(removeItem)
+        var algo = this.state.things.splice(idxRemove, 1)
+        this.setState({
+            things: this.state.things
         })
     }
 
@@ -44,7 +55,7 @@ class Main extends Component {
                     {
                         this.state.things.map(thing => {
                             return( 
-                                <li key={thing}>{thing} <button>ELiminar</button> </li>
+                                <li key={thing}>{thing} <button onClick={this.handleDelete} value={thing}>ELiminar</button> </li>
                             )    
                         })
                     }
