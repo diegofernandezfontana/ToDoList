@@ -1,0 +1,64 @@
+
+$red1: #a10000
+$green1: #099000
+.container
+    display: flex
+    flex-wrap: wrap
+    flex-direction: row
+    justify-content: center
+    min-height: 400px
+    .todo
+        min-width: 400px                    
+        justify-content: center
+        flex-direction: row
+        h1
+            text-align: center
+        label
+        input
+            min-width: 94%    
+            padding: 10px
+            border-radius: 3px
+            border: 1px solid grey
+            margin-bottom: 5px
+        button
+            background-color: white
+            border-radius: 3px
+            cursor: pointer
+            &:hover
+                background-color: $red1
+                color: white
+        
+        form
+            button
+                color: $green1
+                border: 1px solid $green1
+                padding: 8px
+                transition-duration: 0.2s
+                min-width: 100%
+                &:hover
+                    background-color: $green1
+                    color: white
+                    transition-duration: 0.2s
+        ul
+            list-style: none
+            padding: 0px
+            p
+                display: inline
+                margin-right: 5px
+            button
+                color: $red1
+                border: 1px solid $red1
+                padding: 8px
+                transition-duration: 0.2s
+                &:hover
+                    background-color: $red1
+                    color: white
+                    transition-duration: 0.2s
+            li
+                margin-bottom: 3px
+                p
+                    text-transform: capitalize
+.tachar
+    color: grey
+    font-size: 0.8em
+    text-align: center

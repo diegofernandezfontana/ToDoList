@@ -1,0 +1,76 @@
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  min-height: 400px;
+}
+.container .todo {
+  min-width: 400px;
+  justify-content: center;
+  flex-direction: row;
+}
+.container .todo h1 {
+  text-align: center;
+}
+.container .todo input {
+  min-width: 94%;
+  padding: 10px;
+  border-radius: 3px;
+  border: 1px solid grey;
+  margin-bottom: 5px;
+}
+.container .todo button {
+  background-color: white;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.container .todo button:hover {
+  background-color: #a10000;
+  color: white;
+}
+.container .todo form button {
+  color: #099000;
+  border: 1px solid #099000;
+  padding: 8px;
+  transition-duration: 0.2s;
+  min-width: 100%;
+}
+.container .todo form button:hover {
+  background-color: #099000;
+  color: white;
+  transition-duration: 0.2s;
+}
+.container .todo ul {
+  list-style: none;
+  padding: 0px;
+}
+.container .todo ul p {
+  display: inline;
+  margin-right: 5px;
+}
+.container .todo ul button {
+  color: #a10000;
+  border: 1px solid #a10000;
+  padding: 8px;
+  transition-duration: 0.2s;
+}
+.container .todo ul button:hover {
+  background-color: #a10000;
+  color: white;
+  transition-duration: 0.2s;
+}
+.container .todo ul li {
+  margin-bottom: 3px;
+}
+.container .todo ul li p {
+  text-transform: capitalize;
+}
+
+.tachar {
+  color: grey;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+/*# sourceMappingURL=styles.css.map */

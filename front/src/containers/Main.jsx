@@ -2,23 +2,24 @@ import React, { Component } from 'react';
 
 import { Switch, Route, Link } from 'react-router-dom'
 
-import AddContainer from '../containers/AddContainer'
-import RemoveContainer from '../containers/RemoveContainer'
+import s from '../styles.css'
+
+//I Did not add styles cause i need to install loaders and stuff. Just practicing React
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            things: ['Manzana', 'Tomate'],
+            things: [],
             thing: ''
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
+        this.handleCross = this.handleCross.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
     }
     
     handleChange(evt){
-        console.log(this.state.thing)
         this.setState({
             thing: evt.target.value
         })
@@ -26,9 +27,14 @@ class Main extends Component {
 
     handleSubmit(evt){
         evt.preventDefault();
-        this.setState({
-            things: [...this.state.things, this.state.thing]
-        })
+        if(this.state.things.indexOf(this.state.thing.toLocaleLowerCase()) >= 0){
+            alert("Este Item ya se encuentra en la lista")
+        }else{
+            this.setState({
+                things: [...this.state.things, this.state.thing.toLocaleLowerCase()],
+                thing: ''
+            })
+        }
     }
 
     handleDelete(evt){
@@ -41,25 +47,41 @@ class Main extends Component {
         })
     }
 
+    handleCross(e){
+        console.log(e.target);
+        
+    }
+
     render() {
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <label htmlFor="">
-                        <input type="name" value={this.state.thing} onChange={this.handleChange} />
-                    </label>
-                    <br/>
-                    <button type='submit' > Submit </button>
-                </form>
-                <ul>
-                    {
-                        this.state.things.map(thing => {
-                            return( 
-                                <li key={thing}>{thing} <button onClick={this.handleDelete} value={thing}>ELiminar</button> </li>
-                            )    
-                        })
-                    }
-                </ul>
+            <div className={s.container}>
+                <div className={s.todo}>
+                    <h1>To do list</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        <label htmlFor="">
+                        </label>
+                            <input type="name" value={this.state.thing} onChange={this.handleChange} />
+                        <br/>
+                        <button type='submit' > Submit </button>
+                    </form>
+                    <ul>
+                        {
+                            this.state.things.map(thing => {
+                                return( 
+                                    <li key={thing}>
+                                        <p onClick={this.handleCross} name={thing}>{thing}</p>
+                                        <button onClick={this.handleDelete} value={thing}>
+                                            Delete
+                                        </button> 
+                                    </li>
+                                )                                                                
+                            })
+                        }
+                    </ul>
+                    <p className={s.tachar}>
+                        Diego Fernandez Fontana
+                    </p>
+                </div>
             </div>
         );
     }
